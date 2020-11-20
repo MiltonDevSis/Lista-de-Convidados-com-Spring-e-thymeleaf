@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns="http://w3.org/1999/xthml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width"/>
+
+        <title>Lista  de Convidados</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">   
+    </head>
+
+    <body>
+
+        <div class="panel panel-default" style="margin:10px">
+            <div class="panel-heading">
+                <h2 class="panel-title">Lista de convidados DEV Sistemas 2019</h2>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form  th:action="@{/convidados}" class="form-inline" method="POST" th:object="${convidado}" style="margin: 20px 0">
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{nome}" placeholder="Nome" style="margin: 10px"/>
+                    <input type="text" class="form-control" th:field="*{qtdAcompanhantes}" placeholder="Acompanhantes" style="margin: 10px"/>
+                    <button type="submit" class="btn btn-dark" style="margin: 10px">Adicionar</button>
+                </div>
+
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Acompanhantes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="convidado : ${convidadosmv}">
+                        <td th:text="${condidado.nome}"></td>
+                        <td th:text="${condidado.qtdAcompanhantes}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </body>
+</html>
